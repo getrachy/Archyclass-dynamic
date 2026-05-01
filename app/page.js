@@ -14,7 +14,7 @@ export default function Home() {
     async function check() {
       const { data: { user } } = await supabase.auth.getUser()
       if (user) {
-        router.replace('/dashboard')
+        router.push('/dashboard')
       }
     }
     check()
@@ -33,4 +33,4 @@ export default function Home() {
       </div>
     </main>
   )
-    }
+}
