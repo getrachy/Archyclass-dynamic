@@ -60,7 +60,14 @@ export default function Dashboard() {
     router.replace('/login')
   }
 
-  if (loading) return <div style={{padding: '20px', color: '#fff', background: '#000', minHeight: '100vh'}}>Loading...</div>
+  if (loading) return (
+  <div style={{padding: '20px', color: '#fff', background: '#000', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+    <div>
+      <p style={{color: '#ff6b35', fontSize: '20px', textAlign: 'center'}}>Loading...</p>
+      <p style={{color: '#999', fontSize: '14px', textAlign: 'center', marginTop: '8px'}}>Please wait</p>
+    </div>
+  </div>
+)
 
   return (
     <div style={{padding: '20px', maxWidth: '400px', margin: '0 auto', background: '#000', minHeight: '100vh'}}>
