@@ -23,9 +23,9 @@ export default function AuthPage() {
           .eq('id', user.id)
           .maybeSingle()
         if (profile?.class) {
-          router.replace('/dashboard')
+          router.push('/dashboard') // Changed from replace
         } else {
-          router.replace('/onboarding')
+          router.push('/onboarding') // Changed from replace
         }
       }
     }
@@ -47,9 +47,9 @@ export default function AuthPage() {
           .eq('id', data.user.id)
           .maybeSingle()
         if (profile?.class) {
-          router.replace('/dashboard')
+          router.push('/dashboard') // Changed from replace
         } else {
-          router.replace('/onboarding')
+          router.push('/onboarding') // Changed from replace
         }
       } else if (view === 'signup') {
         const { error } = await supabase.auth.signUp({
