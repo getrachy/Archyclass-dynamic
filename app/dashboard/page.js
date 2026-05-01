@@ -61,31 +61,17 @@ export default function Dashboard() {
   }
 
   if (loading) return (
-  <div style={{padding: '20px', color: '#fff', background: '#000', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-    <div>
-      <p style={{color: '#ff6b35', fontSize: '20px', textAlign: 'center'}}>Loading...</p>
-      <p style={{color: '#999', fontSize: '14px', textAlign: 'center', marginTop: '8px'}}>Please wait</p>
+    <div style={{padding: '20px', color: '#fff', background: '#000', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+      <div>
+        <p style={{color: '#ff6b35', fontSize: '20px', textAlign: 'center'}}>Loading...</p>
+        <p style={{color: '#999', fontSize: '14px', textAlign: 'center', marginTop: '8px'}}>Please wait</p>
+      </div>
     </div>
-  </div>
-)
+  )
 
   return (
     <div style={{padding: '20px', maxWidth: '400px', margin: '0 auto', background: '#000', minHeight: '100vh'}}>
       <div style={{display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px'}}>
-        <button 
-          onClick={() => router.replace('/onboarding')}
-          style={{
-            padding: '8px 12px',
-            fontSize: '18px',
-            backgroundColor: '#1a1a1a',
-            color: '#ff6b35',
-            border: '1px solid #ff6b35',
-            borderRadius: '6px',
-            cursor: 'pointer'
-          }}
-        >
-          ←
-        </button>
         <h1 style={{fontSize: '24px', color: '#ff6b35', margin: 0}}>Dashboard</h1>
         <button 
           onClick={handleLogout}
@@ -161,4 +147,4 @@ export default function Dashboard() {
       </div>
     </div>
   )
-    }
+}
