@@ -16,10 +16,11 @@ export default function Dashboard() {
   ), [])
 
   useEffect(() => {
-    async function getData() {
-      const { data: { user } } = await supabase.auth.getUser()
+  async function getData() {
+    try {
+      const { data: { user }, error: userError } = await supabase.auth.getUser()
       
-      if (!user) {
+      if (userError || !user) {
         router.replace('/login')
         return
       }
@@ -30,18 +31,24 @@ export default function Dashboard() {
         .from('profiles')
         .select('class')
         .eq('id', user.id)
-        .single()
+        .maybeSingle() // Changed from single() to maybeSingle()
       
+      // If no profile exists, send to onboarding to create one
       if (error || !data?.class) {
+        console.log('No profile or class found, redirecting to onboarding')
         router.replace('/onboarding')
         return
       }
       
       setUserClass(data.class)
       setLoading(false)
+    } catch (err) {
+      console.error('Dashboard error:', err)
+      router.replace('/login')
     }
-    getData()
-  }, [router, supabase])
+  }
+  getData()
+}, [router, supabase])
 
   const subjects = [
     { name: 'Technical Drawing', icon: '📐' },
